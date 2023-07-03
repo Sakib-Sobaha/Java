@@ -13,7 +13,7 @@ public class Client {
             NetworkUtil networkUtil = new NetworkUtil(serverAddress,serverPort);
             networkUtil.write(clientName);
             new ReadThreadClient(networkUtil);
-            new WriteThreadClient(networkUtil,clientName);
+            new WriteThreadClient(networkUtil, clientName);
         }catch(Exception e){
             System.out.println(e);
         }

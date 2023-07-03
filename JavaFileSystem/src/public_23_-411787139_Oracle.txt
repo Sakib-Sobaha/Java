@@ -1,0 +1,9 @@
+db_name: orcl
+pluggable name: orclpdb
+User Name:SakibSobaha
+https://localhost.easeus.com:5500/em
+password for hr: lIght........
+@?/demo/schema/log/
+@?/demo/schema/human_resources/hr_main.sql
+localhost:1521/orclpdb
+Connect to HR: SQLPLUS hr/lIght299792458#@//localhost:1521/orclpdb

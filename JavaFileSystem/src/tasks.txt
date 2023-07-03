@@ -1,0 +1,53 @@
+File Server System
+.Connect to server ->
+-> client have unique username
+-> further login attempt denied -> immediate termination of the connection -> appropriate message sent
+
+.Creating Directories
+-> directory using username
+
+.Capabilities
+-> Online Offline users distinguishable
+-> Look up list of uploaded files
+-> Look up public files and download any of these files
+-> file request consisting of short file description and a request id broadcast to all the connected clients
+-> view unread messages
+-> upload a file : access public or private : file uploaded in response to a request, must be public
+-> requested file uploaded : server sends a message to the client
+
+Implementation
+MAX_BUFFER_SIZE MIN_CHUNK_SIZE MAX_CHUNK_SIZE
+send file name and file size
+total_size_of_chunks_stored + new_file_size > MAX_BUFFER_SIZE -> not allow the transmission
+MIN_CHUNK_SIZE < chunkSize < MAX_CHUNK_SIZE
+link between fileID and fileName
+1040 KB (file_size) = 10*100 KB(chunkSize) + 40 KB -> 11 chunks
+acknowledgement_time > 30 sec client sends a timeout message to the server and terminates the transmission
+
+
+f f_r b_d c_d ??
+a
+b
+c
+d
+f fileName type
+file
+showMessage
+Send
+b_d fileName type(public/private)
+c_d student_id fileName
+f_r fileName requestId
+exit
+
+Server
+f file queue
+
+1. a -> lookup students (online + offline)
+2. b -> lookup own files (public + private)
+   b_d file filetpye
+3. c studentID -> lookup public files of given "studentID"
+   c_d studentID fileName -> download a public file named "fileName" of "stidentID"
+4. d textDescriptionOfRequestedFile -> request for a file with "textDescriptionOfRequestedFile"
+5. showMessage -> view all unread messages
+6. f fileName fileType -> upload a file with "fileName" and "fileType" (public/private)
+   f_r fileName requestID -> upload a file with "fileName" and fileType as "public" with a valid "requestID"
